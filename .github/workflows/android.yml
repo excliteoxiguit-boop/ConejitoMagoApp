@@ -17,13 +17,13 @@ jobs:
         distribution: 'temurin'
         java-version: '17'
 
-    - name: Validate Gradle wrapper
-      uses: gradle/actions/setup-gradle@v3
+    - name: Grant execute permission for gradlew
+      run: chmod +x gradlew
 
     - name: Build debug APK
-      run: ./gradlew assembleDebug
+      run: ./gradlew assembleDebug --stacktrace
 
-    - name: Upload APK
+    - name: Upload APK artifact
       uses: actions/upload-artifact@v4
       with:
         name: ConejitoMago-APK
